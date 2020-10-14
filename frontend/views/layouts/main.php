@@ -57,7 +57,6 @@ if (Yii::$app->controller->action->id === 'login' || Yii::$app->controller->acti
             'content.php',
             ['content' => $content, 'directoryAsset' => $directoryAsset]
         ) ?>
-        
 
     </div>
 

@@ -78,7 +78,7 @@ class SiteController extends Controller
             return $this->redirect(['site/login']);
         } 
         
-        return $this->redirect(['borrowed-book/index']);
+        return $this->redirect(['bb/index']);
     }
 
     /**

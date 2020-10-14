@@ -9,6 +9,17 @@ $(document).ready(function() {
         });
 	});
 	
+	$('.borrowbook').click(function(e){
+			e.preventDefault();
+			var borrow =1;
+			var link = $(this).attr("val");
+       $.get(link+'?borrow='+borrow,function(data){
+			$('#assignbook').modal('show')
+		 		.find('#assignbookContent')
+		 		.html(data);
+        });
+	});
+	
 	
     $('.addauthor').click(function(e){
 			e.preventDefault();
@@ -18,6 +29,8 @@ $(document).ready(function() {
 			 		.html(data);
         });
 	});
+	
+	
 	
 	$('.returnbook').click(function(e){
 			e.preventDefault();
@@ -31,12 +44,14 @@ $(document).ready(function() {
 	
 	$('.borrowbookstudent').click(function(e){
 			e.preventDefault();
-       $.get('borrowbookstudent',function(data){
-			$('#borrowbookstudent').modal('show')
-		 		.find('#borrowbookstudentContent')
+			var borrow =1;
+			var link = $(this).attr("val");
+       $.get(link+'?borrow='+borrow,function(data){
+			$('#assignbook').modal('show')
+		 		.find('#assignbookContent')
 		 		.html(data);
         });
 	});
-	
+
 
 });

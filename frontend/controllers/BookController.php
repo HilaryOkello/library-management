@@ -98,22 +98,6 @@ class BookController extends Controller
             'model' => $model,
         ]);
     }
-
-    public function actionBorrowbookstudent()
-    {
-        $model = new \frontend\models\BorrowedBook();
-        
-        if ($model->load(Yii::$app->request->post())) {
-            if ($model->validate()) {
-                // form inputs are valid, do something here
-                return;
-            }
-        }
-        
-        return $this->renderAjax('borrowbookstudent', [
-            'model' => $model,
-        ]);
-    }
     
     public function bookauthors($authorId,$bookId){
         $model = New BookAuthor();

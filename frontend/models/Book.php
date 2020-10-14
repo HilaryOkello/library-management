@@ -11,10 +11,10 @@ use Yii;
  * @property string $bookName
  * @property string $referenceNo
  * @property string $publisher
- * @property int $status Status 0 represents available, status 1 represents issued, status 2 represents pending
+ * @property int $status Status 0 Represents available, status 1 represents issued, status 2 represents pending
  *
- * @property Bookauthor[] $bookauthors
- * @property Borrowedbook[] $borrowedbooks
+ * @property BookAuthor[] $bookAuthors
+ * @property BorrowedBook[] $borrowedBooks
  */
 class Book extends \yii\db\ActiveRecord
 {
@@ -54,22 +54,22 @@ class Book extends \yii\db\ActiveRecord
     }
 
     /**
-     * Gets query for [[Bookauthors]].
+     * Gets query for [[BookAuthors]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getBookauthors()
+    public function getBookAuthors()
     {
-        return $this->hasMany(Bookauthor::className(), ['bookId' => 'bookId']);
+        return $this->hasMany(BookAuthor::className(), ['bookId' => 'bookId']);
     }
 
     /**
-     * Gets query for [[Borrowedbooks]].
+     * Gets query for [[BorrowedBooks]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getBorrowedbooks()
+    public function getBorrowedBooks()
     {
-        return $this->hasMany(Borrowedbook::className(), ['bookId' => 'bookId']);
+        return $this->hasMany(BorrowedBook::className(), ['bookId' => 'bookId']);
     }
 }

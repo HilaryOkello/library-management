@@ -22,7 +22,7 @@ $fieldOptions2 = [
 
 <div class="login-box">
     <div class="login-logo">
-        <a href="#"><b>JAMES</b> LMS</a>
+        <a href="#">Libray Management System</a>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">

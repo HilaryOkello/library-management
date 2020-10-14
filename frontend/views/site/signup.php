@@ -27,7 +27,7 @@ $fieldOptions3 = [
 ?>
 <div class="login-box">
     <div class="login-logo">
-        <a href="#"><b>JAMES</b> LMS</a>
+        <a href="#">Library Management System</a>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
@@ -70,7 +70,7 @@ $fieldOptions3 = [
         </div>
         <!-- /.social-auth-links -->
 
-        <a href="<?= Url::to(['site/login'])?>" class="text-center">Sighn In</a>
+        <a href="<?= Url::to(['site/login'])?>" class="text-center">Sign In</a>
 
     </div>
     <!-- /.login-box-body -->

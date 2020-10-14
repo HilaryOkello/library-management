@@ -4,12 +4,12 @@ namespace frontend\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use frontend\models\Borrowedbook;
+use frontend\models\BorrowedBook;
 
 /**
- * BorrowedBookSearch represents the model behind the search form of `frontend\models\Borrowedbook`.
+ * BorrowedBookSearch represents the model behind the search form of `frontend\models\BorrowedBook`.
  */
-class BorrowedBookSearch extends Borrowedbook
+class BorrowedBookSearch extends BorrowedBook
 {
     /**
      * {@inheritdoc}
@@ -18,7 +18,7 @@ class BorrowedBookSearch extends Borrowedbook
     {
         return [
             [['bbId', 'studentId', 'bookId'], 'integer'],
-            [['borrowDate', 'expectedReturnDate', 'actualReturnDate'], 'safe'],
+            [['borrowDate', 'expectedReturn', 'actualReturnDate'], 'safe'],
         ];
     }
 
@@ -40,7 +40,14 @@ class BorrowedBookSearch extends Borrowedbook
      */
     public function search($params)
     {
-        $query = Borrowedbook::find();
+       
+        if(\Yii::$app->user->can('librarian')){
+            $query = BorrowedBook::find()->where(['actualReturnDate'=>NULL]);
+        }
+        if(\Yii::$app->user->can('student')){
+            $studentId = Student::find()->where(['userId'=>\yii::$app->user->id])->one();
+            $query = BorrowedBook::find()->where(['actualReturnDate'=>NULL])->andWhere(['studentId'=>$studentId->studentsId]);
+        }
 
         // add conditions that should always apply here
 
@@ -62,10 +69,9 @@ class BorrowedBookSearch extends Borrowedbook
             'studentId' => $this->studentId,
             'bookId' => $this->bookId,
             'borrowDate' => $this->borrowDate,
-            'expectedReturnDate' => $this->expectedReturnDate,
+            'expectedReturn' => $this->expectedReturn,
             'actualReturnDate' => $this->actualReturnDate,
         ]);
-
 
         return $dataProvider;
     }

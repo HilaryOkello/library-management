@@ -1,5 +1,6 @@
 <?php
 
+use frontend\models\Book;
 use yii\helpers\Html;
 use yii\bootstrap\Modal;
 use yii\grid\GridView;
@@ -48,7 +49,22 @@ $this->params['breadcrumbs'][] = $this->title;
                         'bookName',
                         'referenceNo',
                         'publisher',
-                        'status',
+                        [
+                            'label'=>'Status',
+                            'format' => 'raw',
+                            'value' => function ($dataProvider) {
+                            $bookStatus = Book::find()->where(['bookId'=>$dataProvider->bookId])->One();
+                            if($bookStatus->status == 0){
+                                $button = 'btn btn-info';
+                                $status = 'Available';
+                            }elseif ($bookStatus->status == 1){
+                                $button = 'btn btn-success';
+                                $status = 'Issued';
+                            }
+                            return '<span class="'.$button.'">'.$status.'</span>';
+                            },
+                            
+                            ],
             
                         ['class' => 'yii\grid\ActionColumn'],
                     ],

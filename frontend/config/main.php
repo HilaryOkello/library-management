@@ -11,15 +11,16 @@ return [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
-    
-   'modules' => [
+    'modules' => [
         'rbac' => [
             'class' => 'yii2mod\rbac\Module',
         ],
     ],
-    
     'components' => [
-        
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager',
+            'defaultRoles' => ['guest', 'user'],
+        ],
         'request' => [
             'csrfParam' => '_csrf-frontend',
         ],

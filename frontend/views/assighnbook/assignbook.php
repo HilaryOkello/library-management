@@ -19,12 +19,10 @@ $books = ArrayHelper::map(Book::find()->all(), 'bookId', 'bookName');
         <?= $form->field($model, 'studentId')->dropDownList($students) ?>
         <?= $form->field($model, 'bookId')->dropDownList($books) ?>
         <?= $form->field($model, 'borrowDate') ?>
-        <?= $form->field($model, 'expectedReturnDate') ?>
-        <?= $form->field($model, 'actualReturnDate') ?>
-        <?= $form->field($model, 'status')->dropDownList([ 'PENDING' => 'PENDING', 'RETURNED' => 'RETURNED', '' => '', ], ['prompt' => '']) ?>
+        <?= $form->field($model, 'returnDate') ?>
     
         <div class="form-group">
-            <?= Html::submitButton('Save', ['class' => 'btn btn-primary']) ?>
+            <?= Html::submitButton('Submit', ['class' => 'btn btn-primary']) ?>
         </div>
     <?php ActiveForm::end(); ?>
 

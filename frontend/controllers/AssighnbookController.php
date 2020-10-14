@@ -3,7 +3,6 @@
 namespace frontend\controllers;
 
 use Yii;
-use frontend\models\Borrowedbook;
 
 class AssighnbookController extends \yii\web\Controller
 {
@@ -26,9 +25,5 @@ class AssighnbookController extends \yii\web\Controller
         return $this->renderAjax('assignbook', [
             'model' => $model,
         ]);
-        
     }
-    
-    
-    
-   
+}

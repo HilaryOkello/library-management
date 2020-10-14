@@ -5,13 +5,13 @@ namespace frontend\models;
 use Yii;
 
 /**
- * This is the model class for table "borrowedbook".
+ * This is the model class for table "borrowedBook".
  *
  * @property int $bbId
  * @property int $studentId
  * @property int $bookId
  * @property string $borrowDate
- * @property string $expectedReturnDate
+ * @property string $expectedReturn
  * @property string|null $actualReturnDate
  *
  * @property Student $student
@@ -24,7 +24,7 @@ class BorrowedBook extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'borrowedbook';
+        return 'borrowedBook';
     }
 
     /**
@@ -33,9 +33,9 @@ class BorrowedBook extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['studentId', 'bookId', 'borrowDate', 'expectedReturnDate'], 'required'],
+            [['studentId', 'bookId', 'borrowDate', 'expectedReturn'], 'required'],
             [['studentId', 'bookId'], 'integer'],
-            [['borrowDate', 'expectedReturnDate', 'actualReturnDate'], 'safe'],
+            [['borrowDate', 'expectedReturn', 'actualReturnDate'], 'safe'],
             [['studentId'], 'exist', 'skipOnError' => true, 'targetClass' => Student::className(), 'targetAttribute' => ['studentId' => 'studentsId']],
             [['bookId'], 'exist', 'skipOnError' => true, 'targetClass' => Book::className(), 'targetAttribute' => ['bookId' => 'bookId']],
         ];
@@ -51,7 +51,7 @@ class BorrowedBook extends \yii\db\ActiveRecord
             'studentId' => 'Student ID',
             'bookId' => 'Book ID',
             'borrowDate' => 'Borrow Date',
-            'expectedReturnDate' => 'Expected Return Date',
+            'expectedReturn' => 'Expected Return',
             'actualReturnDate' => 'Actual Return Date',
         ];
     }
